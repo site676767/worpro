@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WORK</title>
+    <link rel="icon" href="work.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Логотип и заголовок */
+        .header {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 30px 30px;
+            z-index: 0;
+            animation: moveBackground 20s linear infinite;
+        }
+
+        @keyframes moveBackground {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(30px, 30px); }
+        }
+
+        .logo-container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            color: #ffcc00;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .site-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .site-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Реклама фотографов */
+        .ad-section {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #2c3e50;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            margin: 0.5rem auto;
+            border-radius: 2px;
+        }
+
+        .photographers-slider {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .photographers-container {
+            display: flex;
+            width: 1000%;
+            height: 100%;
+            transition: transform 1s ease;
+        }
+
+        .photographer-item {
+            flex: 1;
+            min-width: 10%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            padding: 1rem;
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+        }
+
+        .photographer-name {
+            font-size: 1.4rem;
+            font-weight: 600;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+        }
+
+        /* Карточки вакансий */
+        .jobs-section {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 1rem;
+        }
+
+        .jobs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .job-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .job-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .job-image {
+            height: 160px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .job-content {
+            padding: 1.2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .job-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+
+        .job-description {
+            color: #555;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+
+        .job-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: #777;
+            margin-bottom: 1rem;
+        }
+
+        .job-type {
+            background-color: #e8f4ff;
+            color: #2575fc;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        .job-btn {
+            display: block;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: white;
+            text-align: center;
+            padding: 0.7rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .job-btn:hover {
+            background: linear-gradient(to right, #5a0cb9, #1c68e8);
+            box-shadow: 0 4px 8px rgba(106, 17, 203, 0.3);
+        }
+
+        /* Видео секция */
+        .video-section {
+            max-width: 1000px;
+            margin: 3rem auto;
+            padding: 0 1rem;
+        }
+
+        .video-container {
+            position: relative;
+            border: 12px solid #2c3e50;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            background-color: #000;
+        }
+
+        .video-container::before {
+            content: 'Как найти подработку: советы для подростков';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(44, 62, 80, 0.9);
+            color: white;
+            padding: 0.8rem;
+            text-align: center;
+            font-weight: 600;
+            z-index: 2;
+        }
+
+        .video-frame {
+            width: 100%;
+            height: 400px;
+            display: block;
+            object-fit: cover;
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1;
+            cursor: pointer;
+        }
+
+        .play-btn {
+            background-color: rgba(106, 17, 203, 0.8);
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .video-overlay:hover .play-btn {
+            background-color: rgba(106, 17, 203, 1);
+            transform: scale(1.1);
+        }
+
+        /* Футер */
+        .footer {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 2.5rem 0;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 0 1rem;
+        }
+
+        .footer-column {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-title {
+            font-size: 1.4rem;
+            margin-bottom: 1.2rem;
+            color: #ffcc00;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: #6a11cb;
+        }
+
+        .footer-contact {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-icon {
+            margin-right: 0.8rem;
+            color: #6a11cb;
+            font-size: 1.2rem;
+            width: 20px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid #333;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .site-title {
+                font-size: 2.2rem;
+            }
+            
+            .logo {
+                font-size: 2.8rem;
+            }
+            
+            .video-frame {
+                height: 300px;
+            }
+            
+            .jobs-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                padding: 1.5rem 0;
+            }
+            
+            .site-title {
+                font-size: 1.8rem;
+            }
+            
+            .logo {
+                font-size: 2.2rem;
+            }
+            
+            .photographers-slider {
+                height: 200px;
+            }
+            
+            .video-frame {
+                height: 220px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка с логотипом и названием -->
+    <header class="header">
+        <div class="logo-container">
+            <div class="logo">
+                <i class="fas fa-briefcase"></i>
+            </div>
+            <h1 class="site-title">Работа и Подработка</h1>
+            <p class="site-subtitle">Найдите подходящую работу или подработку для подростков и взрослых</p>
+        </div>
+    </header>
+
+    <!-- Секция с рекламой фотографов -->
+    <section class="ad-section">
+        <h2 class="section-title">Профессия</h2>
+        <div class="photographers-slider">
+            <div class="photographers-container" id="photographersContainer">
+                <!-- Фотографы будут добавлены через JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция с карточками вакансий -->
+    <section class="jobs-section">
+        <h2 class="section-title">Вакансии</h2>
+        <div class="jobs-grid" id="jobsContainer">
+            <!-- Карточки вакансий будут добавлены через JavaScript -->
+        </div>
+    </section>
+
+    <!-- Секция с видео -->
+    <section class="video-section">
+        <h2 class="section-title">Полезные советы для поиска работы</h2>
+        <div class="video-container">
+            <div class="video-overlay" id="videoOverlay">
+                <div class="play-btn">
+                    <i class="fas fa-play"></i>
+                </div>
+            </div>
+            <video class="video-frame" id="videoFrame" controls>
+                <source src="" type="video/mp4">
+                Ваш браузер не поддерживает видео.
+            </video>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3 class="footer-title">Контакты</h3>
+                <div class="footer-contact">
+                    <i class="fas fa-envelope footer-icon"></i>
+                    <span>efas595959@gmail.com</span>
+                </div>
+                <div class="footer-contact">
+                    <i class="fas fa-phone-alt footer-icon"></i>
+                    <span>+7 (910) 472-50-22</span>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3 class="footer-title">О нас</h3>
+                <p>Я помогаю подросткам и взрослым найти подработку или постоянную работу в различных сферах. Наш сайт предлагает только проверенные вакансии от надежных работодателей.
+                    Можно работать с опытом и без опыта с любой профессией !
+                </p>
+            </div>
+            
+            <div class="footer-column">
+                <h3 class="footer-title">Информация</h3>
+                <div class="footer-contact">
+                    <i class="fas fa-calendar-alt footer-icon"></i>
+                    <span>Основан в 2025 году</span>
+                </div>
+                <div class="footer-contact">
+                    <i class="fas fa-clock footer-icon"></i>
+                    <span>Пн-Пт: 9:00 - 18:00</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 Работа и Подработка. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Данные для фотографов
+        const photographers = [
+            { name: "Программист", image: "programmer1.png" },
+            { name: "Дизайнер", image: "disainer1.png" },
+            { name: "Фотограф", image: "fotografea.png" },
+            { name: "Курьер", image: "49389.png" },
+            { name: "Мастер", image: "master 1.png" },
+            { name: "Финансер", image: "finans.png" },
+            { name: "Кофейня официант", image: "coffee1.png" },
+            { name: "Оператор банка", image: "sberbank.png" },
+            { name: "Почтальон", image: "russia.png" },
+        ];
+
+        // Базовые данные для вакансий
+        const baseJobs = [
+            { 
+                title: "Помощник фотографа", 
+                type: "Подработка", 
+                image: "fotograf.png", 
+                description: "Помощь в организации фотосессий, подготовка оборудования.",
+                link: "https://hh.ru/search/vacancy?text=Фотографф&salary=&ored_clusters=true&area=1&suggestId=fdebf963-084b-48d5-bed5-7e6238559ee6&hhtmFrom=vacancy_search_list&hhtmFromLabel=vacancy_search_line" 
+            },
+            { 
+                title: "Курьер", 
+                type: "Подработка", 
+                image: "qwsd.png", 
+                description: "Доставка заказов по городу. Свободный график.",
+                link: "https://hh.ru/vacancies/kurer" 
+            },
+            { 
+                title: "Официант", 
+                type: "Полная занятость", 
+                image: "ofisiant.png", 
+                description: "Работа в ресторане в центре города. Стажировка оплачивается.",
+                link: "https://hh.ru/vacancies/oficiant" 
+            },
+            { 
+                title: "Программист", 
+                type: "Удаленная работа", 
+                image: "programmer.png", 
+                description: "IT Программирование.",
+                link: "https://hh.ru/vacancies/programmist" 
+            },
+            { 
+                title: "Мастер техники", 
+                type: "Свободный график", 
+                image: "master.png", 
+                description: "Чини нотбуки, пк, телефоны.",
+                link: "https://hh.ru/search/vacancy?text=мастер+техники+пк+нотбука&salary=&ored_clusters=true&area=1&suggestId=544967ab-dd69-4d06-8a1f-df9d5a8458cb&hhtmFrom=vacancy_search_list&hhtmFromLabel=vacancy_search_line" 
+            },
+            { 
+                title: "Финансер", 
+                type: "Удаленная работа", 
+                image: "finanser 1.png", 
+                description: "Онлайн-занятия со школьниками. График по договоренности.",
+                link: "https://hh.ru/search/vacancy?text=Финансер&salary=&ored_clusters=true&area=1&suggestId=ce205baa-cb41-4184-8024-1c2e87225745&hhtmFrom=vacancy_search_list&hhtmFromLabel=vacancy_search_line" 
+            },
+            { 
+                title: "Кофейня", 
+                type: "Полная занятость", 
+                image: "coffee.png", 
+                description: "Работа в кофейне. Стажировка оплачивается.",
+                link: "https://hh.ru/search/vacancy?text=Кофейня&salary=&ored_clusters=true&area=1&suggestId=cef296c0-0725-4180-b8fc-a70dde6a6403&hhtmFrom=vacancy_search_list&hhtmFromLabel=vacancy_search_line" 
+            },
+            { 
+                title: "Оператор Банка", 
+                type: "Работа", 
+                image: "sberbank1.png", 
+                description: "Работать с клеентами и банком Гибкий график.",
+                link: "https://hh.ru/search/vacancy?text=Оператор+банка&salary=&ored_clusters=true&area=1&suggestId=d96a668f-1798-4683-a212-3ed5174b95a8&hhtmFrom=vacancy_search_list&hhtmFromLabel=vacancy_search_line" 
+            },
+            { 
+                title: "Почтальон", 
+                type: "Работа", 
+                image: "poshta.png", 
+                description: "Приносить письма",
+                link: "https://hh.ru/vacancies/pochtalon" 
+            },
+            { 
+                title: "Дизайнер", 
+                type: "Подработка", 
+                image: "disainerf.png", 
+                description: "Дизайнер свободный график работы.",
+                link: "https://hh.ru/vacancies/dizayner" 
+            }
+        ];
+
+        // Создаем больше вакансий с разными данными
+        const allJobs = [];
+        
+        // Создаем 50 уникальных вакансий
+        for (let i = 0; i < 50; i++) {
+            const baseJob = baseJobs[i % baseJobs.length]; // Берем вакансию по кругу
+            const variations = [
+                { suffix: " (младший)", experience: "Без опыта" },
+                { suffix: " (старший)", experience: "Опыт от 1 года" },
+                { suffix: " (стажер)", experience: "Стажировка" },
+                { suffix: " (ведущий)", experience: "Опыт от 3 лет" },
+                { suffix: " (без опыта)", experience: "Любой опыт" }
+            ];
+            
+            const variation = variations[Math.floor(Math.random() * variations.length)];
+            const salary = ["20,000 - 40,000 ₽", "30,000 - 50,000 ₽", "40,000 - 70,000 ₽", "50,000 - 80,000 ₽", "60,000 - 100,000 ₽"][Math.floor(Math.random() * 5)];
+            
+            // Создаем уникальную вакансию
+            const uniqueJob = {
+                title: baseJob.title + variation.suffix,
+                type: baseJob.type,
+                image: baseJob.image,
+                description: baseJob.description + " " + variation.experience + ". Зарплата: " + salary + ".",
+                link: baseJob.link.replace(/vacancy\/\d+/, `vacancy/${10000000 + i}`) // Уникальная ссылка
+            };
+            
+            allJobs.push(uniqueJob);
+        }
+
+        // Генерация фотографов
+        const photographersContainer = document.getElementById('photographersContainer');
+        
+        // Создаем 10 копий массива фотографов для бесконечной прокрутки
+        for (let i = 0; i < 10; i++) {
+            photographers.forEach(photographer => {
+                const photographerItem = document.createElement('div');
+                photographerItem.className = 'photographer-item';
+                photographerItem.style.backgroundImage = `url('${photographer.image}')`;
+                photographerItem.innerHTML = `<div class="photographer-name">${photographer.name}</div>`;
+                photographersContainer.appendChild(photographerItem);
+            });
+        }
+
+        // Автоматическая прокрутка фотографов
+        let currentSlide = 0;
+        const totalSlides = photographers.length * 10; // 10 копий массива
+        const slideWidth = 10; // 10% на каждый слайд (так как 10 фотографов в видимой области)
+
+        function moveSlider() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            photographersContainer.style.transform = `translateX(-${currentSlide * slideWidth}%)`;
+        }
+
+        // Запускаем автоматическую прокрутку каждые 3 секунды
+        setInterval(moveSlider, 3000);
+
+        // Генерация карточек вакансий
+        const jobsContainer = document.getElementById('jobsContainer');
+        
+        // Создаем 50 карточек из массива allJobs
+        allJobs.forEach(job => {
+            const jobCard = document.createElement('div');
+            jobCard.className = 'job-card';
+            
+            // Случайный возрастной рейтинг
+            const ageRating = Math.random() > 0.5 ? "16+" : "18+";
+            
+            jobCard.innerHTML = `
+                <img src="${job.image}" alt="${job.title}" class="job-image">
+                <div class="job-content">
+                    <h3 class="job-title">${job.title}</h3>
+                    <p class="job-description">${job.description}</p>
+                    <div class="job-meta">
+                        <span>${ageRating}</span>
+                        <span class="job-type">${job.type}</span>
+                    </div>
+                    <a href="${job.link}" target="_blank" class="job-btn">Перейти к вакансии</a>
+                </div>
+            `;
+            
+            jobsContainer.appendChild(jobCard);
+        });
+
+        // Обработчик для видео
+        const videoOverlay = document.getElementById('videoOverlay');
+        const videoFrame = document.querySelector('#videoFrame');
+        
+        videoOverlay.addEventListener('click', function() {
+            videoOverlay.style.display = 'none';
+            videoFrame.controls = true;
+        });
+    </script>
+</body>
+</html>
